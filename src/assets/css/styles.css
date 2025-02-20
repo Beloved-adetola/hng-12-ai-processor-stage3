@@ -53,13 +53,11 @@ header nav h2 {
   line-height: 1.5;
 }
 .message.user {
-  background: #e0f7fa;
+  background: linear-gradient(90deg, #fffde7, #50e3c2);
   text-align: right;
-  width: 60%;
-  justify-content: right;
 }
 .message.ai {
-  background: #fffde7;
+  background: linear-gradient(90deg, #e7f5fe, #4a90e2);
   text-align: left;
 }
 
