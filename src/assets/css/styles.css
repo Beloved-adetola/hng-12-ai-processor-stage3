@@ -53,13 +53,12 @@ header nav h2 {
   line-height: 1.5;
 }
 .message.user {
-  background: #e0f7fa;
+  background: linear-gradient(90deg, #fffde7, #2d966a93);
   text-align: right;
-  width: 60%;
   justify-content: right;
 }
 .message.ai {
-  background: #fffde7;
+  background: linear-gradient(90deg, #50e3c381, #fffde7);
   text-align: left;
 }
 
@@ -106,4 +105,4 @@ header nav h2 {
 .input-area button img {
   width: 20px;
   height: 20px;
-}/*# sourceMappingURL=styles.css.map */
+} /*# sourceMappingURL=styles.css.map */
