@@ -1,5 +1,6 @@
 import { useState } from "react";
 import useData from "../hooks/useData";
+import send from '../assets/image.png'
 
 const InputArea = () => {
   const { addMessage, detectLanguage } = useData();
@@ -23,7 +24,7 @@ const InputArea = () => {
           placeholder="Enter text to translate"
         />
         <button onClick={() => handleSend()} className="" disabled={!input}>
-          <img src="/image.png" alt="" className="" />
+          <img src={send} alt="" className="" />
         </button>
       </div>
   );

@@ -53,12 +53,13 @@ header nav h2 {
   line-height: 1.5;
 }
 .message.user {
-  background: linear-gradient(90deg, #fffde7, #2d966a93);
+  background: #e0f7fa;
   text-align: right;
+  width: 60%;
   justify-content: right;
 }
 .message.ai {
-  background: linear-gradient(90deg, #50e3c381, #fffde7);
+  background: #fffde7;
   text-align: left;
 }
 
@@ -105,4 +106,79 @@ header nav h2 {
 .input-area button img {
   width: 20px;
   height: 20px;
-} /*# sourceMappingURL=styles.css.map */
+}
+
+@media (max-width: 768px) {
+  header {
+    padding: 0.75rem;
+  }
+  header nav h2 {
+    font-size: 1.4rem;
+  }
+  .home-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .chat-area {
+    padding: 0.75rem;
+    max-height: 300px;
+  }
+  .input-area {
+    padding: 0.75rem;
+  }
+  .input-area textarea {
+    font-size: 0.9rem;
+    padding: 0.5rem;
+  }
+  .input-area button {
+    padding: 0.5rem 0.75rem;
+    margin-left: 0.5rem;
+  }
+  .input-area button img {
+    width: 18px;
+    height: 18px;
+  }
+  .message {
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+  }
+  .message p {
+    margin: 0.25rem 0;
+    font-size: 0.9rem;
+  }
+}
+@media (max-width: 480px) {
+  header {
+    padding: 0.5rem;
+  }
+  header nav h2 {
+    font-size: 1.2rem;
+  }
+  .home-container {
+    margin: 0.5rem;
+    padding: 0.75rem;
+  }
+  .chat-area {
+    padding: 0.5rem;
+    max-height: 250px;
+  }
+  .input-area {
+    flex-direction: column;
+  }
+  .input-area textarea {
+    width: 100%;
+    margin-bottom: 0.5rem;
+  }
+  .input-area button {
+    width: 100%;
+    margin: 0;
+  }
+  .message {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .message p {
+    margin: 0.25rem 0;
+    font-size: 0.85rem;
+  }
+}/*# sourceMappingURL=styles.css.map */

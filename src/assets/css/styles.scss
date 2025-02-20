@@ -1,10 +1,14 @@
 // Variables
-$primary-color: #4a90e2;       // A calm blue for primary buttons and header
-$secondary-color: #50e3c2;     // A complementary teal accent
-$background-color: #f9f9f9;    // Soft background color
-$text-color: #333;             // Dark text for readability
+$primary-color: #4a90e2;     
+$secondary-color: #50e3c2;   
+$background-color: #f9f9f9; 
+$text-color: #333;             
 $border-radius: 8px;
 $box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+
+// Breakpoints
+$breakpoint-sm: 480px;
+$breakpoint-md: 768px;
 
 // Global Styles
 body {
@@ -129,6 +133,97 @@ header {
     img {
       width: 20px;
       height: 20px;
+    }
+  }
+}
+
+
+// Responsive Styles
+@media (max-width: $breakpoint-md) {
+  header {
+    padding: 0.75rem;
+    nav h2 {
+      font-size: 1.4rem;
+    }
+  }
+
+  .home-container {
+    margin: 1rem;
+    padding: 1rem;
+  }
+
+  .chat-area {
+    padding: 0.75rem;
+    max-height: 300px;
+  }
+
+  .input-area {
+    padding: 0.75rem;
+
+    textarea {
+      font-size: 0.9rem;
+      padding: 0.5rem;
+    }
+
+    button {
+      padding: 0.5rem 0.75rem;
+      margin-left: 0.5rem;
+
+      img {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+
+  .message {
+    padding: 0.5rem;
+    margin-bottom: 0.75rem;
+
+    p {
+      margin: 0.25rem 0;
+      font-size: 0.9rem;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-sm) {
+  header {
+    padding: 0.5rem;
+    nav h2 {
+      font-size: 1.2rem;
+    }
+  }
+
+  .home-container {
+    margin: 0.5rem;
+    padding: 0.75rem;
+  }
+
+  .chat-area {
+    padding: 0.5rem;
+    max-height: 250px;
+  }
+
+  .input-area {
+    flex-direction: column;
+    textarea {
+      width: 100%;
+      margin-bottom: 0.5rem;
+    }
+    button {
+      width: 100%;
+      margin: 0;
+    }
+  }
+
+  .message {
+    padding: 0.5rem;
+    margin-bottom: 0.5rem;
+
+    p {
+      margin: 0.25rem 0;
+      font-size: 0.85rem;
     }
   }
 }
