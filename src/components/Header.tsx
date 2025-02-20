@@ -3,7 +3,7 @@ const Header = () => {
   return (
     <header className="">
       <nav className="">
-        <h2 className="">Ai Text Processor</h2>
+        <h2 className="">AI Text Processor</h2>
       </nav>
     </header>
   );

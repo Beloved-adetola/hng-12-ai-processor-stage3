@@ -55,7 +55,8 @@ header nav h2 {
 .message.user {
   background: #e0f7fa;
   text-align: right;
-  width: -10%;
+  width: 60%;
+  justify-content: right;
 }
 .message.ai {
   background: #fffde7;

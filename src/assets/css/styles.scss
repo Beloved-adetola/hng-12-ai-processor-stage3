@@ -71,7 +71,8 @@ header {
   &.user {
     background: #e0f7fa;
     text-align: right;
-    width: -10%;
+    width: 60%;
+    justify-content: right;
   }
 
   &.ai {
