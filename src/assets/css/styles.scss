@@ -1,10 +1,9 @@
 // Variables
 $primary-color: #4a90e2;
 $secondary-color: #50e3c2;
-$background-color: #f9f9f9;
 $text-color: #333;
 $border-radius: 15px;
-$box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+$box-shadow: 5px 5px 20px rgba(5, 133, 54, 0.4);
 
 // Breakpoints
 $breakpoint-sm: 480px;
@@ -15,7 +14,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  background-color: $background-color;
+  background: url('../background.png') no-repeat;
+  background-size: cover;
   color: $text-color;
   line-height: 1.6;
 }
