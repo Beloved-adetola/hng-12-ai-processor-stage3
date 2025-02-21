@@ -6,7 +6,7 @@ $border-radius: 15px;
 $box-shadow: 5px 5px 20px rgba(5, 133, 54, 0.4);
 
 // Breakpoints
-$breakpoint-sm: 480px;
+$breakpoint-sm: 320px;
 $breakpoint-md: 768px;
 
 // Global Styles
@@ -312,10 +312,20 @@ textarea:focus {
   .message {
     padding: 0.5rem;
     margin-bottom: 0.5rem;
+    font-size: rem;
 
     p {
       margin: 0.25rem 0;
       font-size: 0.85rem;
+    }
+    .select-btn {
+      width: 50%;
+      margin-bottom: 0.8rem;
+      height: 1.9rem;
+      font-size: 0.7rem;
+    }
+    .translated-text {
+      font-size: 0.8rem;
     }
   }
 }

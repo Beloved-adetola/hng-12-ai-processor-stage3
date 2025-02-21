@@ -235,7 +235,7 @@ textarea:focus {
     font-size: 0.9rem;
   }
 }
-@media (max-width: 480px) {
+@media (max-width: 320px) {
   header {
     padding: 0.5rem;
   }
@@ -264,9 +264,19 @@ textarea:focus {
   .message {
     padding: 0.5rem;
     margin-bottom: 0.5rem;
+    font-size: rem;
   }
   .message p {
     margin: 0.25rem 0;
     font-size: 0.85rem;
+  }
+  .message .select-btn {
+    width: 50%;
+    margin-bottom: 0.8rem;
+    height: 1.9rem;
+    font-size: 0.7rem;
+  }
+  .message .translated-text {
+    font-size: 0.8rem;
   }
 }/*# sourceMappingURL=styles.css.map */

@@ -79,7 +79,7 @@ function MessageList({ messages }: Props) {
               {message.detectedLanguage && (
                 <div>
                   <p className="detected-language">
-                    Detected Language:{" "}
+                    Detected Language:
                     <span>{message.detectedLanguage.detectedLanguage}</span>
                   </p>
 
@@ -91,6 +91,7 @@ function MessageList({ messages }: Props) {
                       }
                       value={translationSelections[message.id] || ""}
                       aria-label="Select Target Language"
+                      className="select-btn"
                     >
                       <option value="">Select Language</option>
                       {Languages.map((lang) => (
@@ -122,7 +123,7 @@ function MessageList({ messages }: Props) {
                     </button>
                     {message.text.length > 150 &&
                       message.detectedLanguage.detectedLanguage === "en" && (
-                        <button
+                      <button
                           onClick={() =>
                             handleSummarize(message.id, message.text)
                           }
