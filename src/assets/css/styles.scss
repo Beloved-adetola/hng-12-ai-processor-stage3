@@ -142,6 +142,44 @@ header {
   }
 }
 
+.message .detected-language {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: $primary-color;
+  margin-bottom: 0.5rem;
+}
+
+/* Styling the select input inside messages */
+.message select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+  background-color: #fff;
+  color: $text-color;
+  appearance: none;
+  outline: none;
+}
+
+/* Styling button inputs within messages */
+.message button {
+  background: $primary-color;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: $border-radius;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+  margin-right: 0.5rem;
+}
+
+.message button:hover {
+  background: darken($primary-color, 5%);
+}
+
+
 // Error styling
 .message .error {
   color: red;

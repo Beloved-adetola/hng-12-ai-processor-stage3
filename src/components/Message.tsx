@@ -82,9 +82,9 @@ function MessageList({ messages }: Props) {
 
                 {message.detectedLanguage && (
                   <div>
-                    <p>
-                      <span className="">Detected Language: </span>
-                      {message.detectedLanguage.detectedLanguage}
+                    <p className="detected-language">
+                      Detected Language:
+                      <span>{message.detectedLanguage.detectedLanguage}</span>
                     </p>
 
                     <div className="">

@@ -113,6 +113,45 @@ header nav h2 {
   height: 20px;
 }
 
+.message .detected-language {
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: #4a90e2;
+  margin-bottom: 0.5rem;
+}
+
+/* Styling the select input inside messages */
+.message select {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+  font-size: 0.9rem;
+  margin-right: 0.5rem;
+  background-color: #fff;
+  color: #333;
+  -webkit-appearance: none;
+     -moz-appearance: none;
+          appearance: none;
+  outline: none;
+}
+
+/* Styling button inputs within messages */
+.message button {
+  background: #4a90e2;
+  color: #fff;
+  border: none;
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.3s ease;
+  margin-right: 0.5rem;
+}
+
+.message button:hover {
+  background: #3483de;
+}
+
 .message .error {
   color: red;
   font-weight: bold;
