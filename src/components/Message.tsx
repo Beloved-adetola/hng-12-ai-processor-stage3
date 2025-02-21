@@ -19,6 +19,8 @@ function MessageList({ messages }: Props) {
   const errors = useData((s) => s.errors);
   const loadingStates = useData((s) => s.isLoading);
   const setError = useData((s) => s.setError);
+  const downloadProgress = useData(s => s.downloadProgress)
+
 
   const handleLanguageChange = (messageId: number, language: string) => {
     setTranslationSelections((prev) => ({ ...prev, [messageId]: language }));
@@ -132,6 +134,7 @@ function MessageList({ messages }: Props) {
                   </div>
                 </div>
               )}
+                                              {downloadProgress && (<p>{downloadProgress.loaded}/{downloadProgress.total}</p>)}
               {errors[message.id] && (
                 <p className="error">{errors[message.id]}</p>
               )}

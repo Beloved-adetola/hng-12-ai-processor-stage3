@@ -15,9 +15,8 @@ const InputArea = () => {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    // If the user presses Enter without Shift, submit
     if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault(); // Prevent a newline in the textarea
+      e.preventDefault(); 
       handleSend();
     }
   };
