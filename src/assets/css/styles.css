@@ -235,7 +235,7 @@ textarea:focus {
     font-size: 0.9rem;
   }
 }
-@media (max-width: 320px) {
+@media (max-width: 425px) {
   header {
     padding: 0.5rem;
   }
