@@ -19,8 +19,7 @@ function MessageList({ messages }: Props) {
   const errors = useData((s) => s.errors);
   const loadingStates = useData((s) => s.isLoading);
   const setError = useData((s) => s.setError);
-  const downloadProgress = useData(s => s.downloadProgress)
-
+  const downloadProgress = useData((s) => s.downloadProgress);
 
   const handleLanguageChange = (messageId: number, language: string) => {
     setTranslationSelections((prev) => ({ ...prev, [messageId]: language }));
@@ -80,7 +79,8 @@ function MessageList({ messages }: Props) {
               {message.detectedLanguage && (
                 <div>
                   <p className="detected-language">
-                    Detected Language: <span>{message.detectedLanguage.detectedLanguage}</span>
+                    Detected Language:{" "}
+                    <span>{message.detectedLanguage.detectedLanguage}</span>
                   </p>
 
                   <div>
@@ -126,7 +126,7 @@ function MessageList({ messages }: Props) {
                           onClick={() =>
                             handleSummarize(message.id, message.text)
                           }
-                        aria-label="Summarize Text"
+                          aria-label="Summarize Text"
                         >
                           Summarize
                         </button>
@@ -134,7 +134,14 @@ function MessageList({ messages }: Props) {
                   </div>
                 </div>
               )}
-                                              {downloadProgress && (<p>{downloadProgress.loaded}/{downloadProgress.total}</p>)}
+              {downloadProgress && (
+                <p>
+                  Downloading <i
+                          className="bx bx-loader-circle bx-spin"
+                          style={{ color: "#088112", fontSize: "24px" }}
+                        ></i>
+                </p>
+              )}
               {errors[message.id] && (
                 <p className="error">{errors[message.id]}</p>
               )}
