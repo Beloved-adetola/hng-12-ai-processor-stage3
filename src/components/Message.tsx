@@ -135,19 +135,15 @@ function MessageList({ messages }: Props) {
                   </div>
                 </div>
               )}
-              {downloadProgress && (
-                <p>
-                  Downloading... {downloadProgress.loaded}/{downloadProgress.total}
-                </p>
-              )}
-              {errors[message.id] && (
-                <p className="error">{errors[message.id]}</p>
-              )}
+              {downloadProgress && <p>Downloading...</p>}
               {message.translatedText && (
                 <p className="translated-text">
                   <b>Translated Text: </b>
                   {message.translatedText}
                 </p>
+              )}
+              {errors[message.id] && (
+                <p className="error">{errors[message.id]}</p>
               )}
             </div>
           </div>

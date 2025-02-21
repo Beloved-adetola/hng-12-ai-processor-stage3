@@ -183,6 +183,7 @@ textarea:focus {
 .message .error {
   color: red;
   font-weight: bold;
+  font-size: 0.9rem;
   margin-top: 0.5rem;
 }
 
