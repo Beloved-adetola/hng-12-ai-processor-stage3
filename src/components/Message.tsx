@@ -137,10 +137,11 @@ function MessageList({ messages }: Props) {
               )}
               {downloadProgress && (
                 <p>
-                  Downloading <i
+                  {/* Downloading <i
                           className="bx bx-loader-circle bx-spin"
                           style={{ color: "#088112", fontSize: "24px" }}
-                        ></i>
+                        ></i> */}
+                  {downloadProgress.loaded}/{downloadProgress.total}
                 </p>
               )}
               {errors[message.id] && (

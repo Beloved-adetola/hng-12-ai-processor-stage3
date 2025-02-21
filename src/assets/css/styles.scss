@@ -6,8 +6,9 @@ $border-radius: 15px;
 $box-shadow: 5px 5px 20px rgba(5, 133, 54, 0.4);
 
 // Breakpoints
-$breakpoint-sm: 320px and 375px and 425px;
-$breakpoint-md: 768px;
+$breakpoint-sm: 425px;
+$breakpoint-md: 900px;
+$breakpoint-lg: 1200px;
 
 // Global Styles
 * {
@@ -231,6 +232,58 @@ textarea:focus {
 }
 
 // Responsive Styles
+
+@media (max-width: $breakpoint-lg) {
+  body {
+    padding: 2rem;
+  }
+  header {
+    padding: 1rem;
+    nav h2 {
+      font-size: 1.7rem;
+    }
+  }
+
+  .home-container {
+    margin: 1rem;
+    padding: 2rem;
+  }
+
+  .chat-area {
+    padding: 1.1rem;
+    max-height: 400px;
+  }
+
+  .input-area {
+    padding: 1rem;
+
+    textarea {
+      font-size: 1rem;
+      padding: 0.75rem;
+    }
+
+    button {
+      padding: 0.75rem 1rem;
+      margin-left: 1rem;
+
+      svg {
+        width: 20px;
+        height: 20px;
+      }
+    }
+  }
+
+  .message {
+    padding: 0.75rem;
+    margin-bottom: 1rem;
+
+    p {
+      margin: 0.5rem 0;
+      font-size: 1.1rem;
+    }
+  }
+}
+
 @media (max-width: $breakpoint-md) {
   header {
     padding: 0.75rem;
