@@ -38,7 +38,7 @@ interface SummarizerCapabilities {
 }
 
 type SummaryType = "key-points" | "tldr" | "teaser" | "headline";
-type SummaryFormat = "markdown" | "plain-text";
+type SummaryFormat = "plain-text";
 type SummaryLength = "short" | "medium";
 
 interface Summarize {

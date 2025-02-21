@@ -111,11 +111,9 @@ const useData = create<LanguageAction & LanguageState>()((set, get) => ({
     try {
       let translator;
       console.log("ai" in self && "translator" in self.ai);
-      
 
       if (!("ai" in self && "translator" in self.ai)) {
         throw new Error("The translator API isn't available");
-        
       }
 
       const translatorCapabilities = await self.ai.translator.capabilities();
@@ -151,14 +149,16 @@ const useData = create<LanguageAction & LanguageState>()((set, get) => ({
       }
       await translator?.ready;
       const result = await translator?.translate(text);
-      console.log(translator);
 
       return result;
     } catch (error) {
       set((state) => ({
         errors: {
           ...state.errors,
-          [id]: error instanceof Error ? error.message : "An error occurred while translating",
+          [id]:
+            error instanceof Error
+              ? error.message
+              : "An error occurred while translating",
         },
       }));
     } finally {
@@ -180,28 +180,27 @@ const useData = create<LanguageAction & LanguageState>()((set, get) => ({
         throw new Error("Not supported");
       }
 
-      const options: Summarize = {
-        sharedContext: "This is a scientific article",
-        type: "key-points",
-        format: "markdown",
+      const settings: Summarize = {
+        sharedContext: "This is a website documentation",
+        type: "headline",
+        format: "plain-text",
         length: "medium",
       };
 
       const capabilities = await self.ai.summarizer.capabilities();
 
       if (capabilities.available == "no") {
-        throw new Error("You need to enable the summarizer API");
+        throw new Error("The Summarizer API isn't usable.");
       }
       if (capabilities.available == "readily") {
-        summarizer = await self.ai.summarizer.create(options);
+        summarizer = await self.ai.summarizer.create(settings);
       } else {
-        summarizer = await self.ai.summarizer.create(options);
+        summarizer = await self.ai.summarizer.create(settings);
         summarizer.addEventListener("downloadprogress", (e) => {
-          set({ downloadProgress: { loaded: e.loaded, total: e.total } });
+          console.log(e.loaded, e.total);
         });
+        await summarizer.ready;
       }
-      await summarizer.ready;
-
       const summary = await summarizer.summarize(longText, {
         context: "Make it self-explanatory",
       });
