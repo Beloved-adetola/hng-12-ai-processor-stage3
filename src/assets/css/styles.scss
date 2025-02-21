@@ -10,11 +10,30 @@ $breakpoint-sm: 480px;
 $breakpoint-md: 768px;
 
 // Global Styles
+* {
+  &::-webkit-scrollbar {
+    width: 10px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: $border-radius;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    background: $primary-color;
+    border-radius: $border-radius;
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: darken($primary-color, 70%);
+  }
+}
 body {
   margin: 0;
   padding: 0;
   font-family: "Helvetica Neue", Arial, sans-serif;
-  background: url('../background.png') no-repeat;
+  background: url("../background.png") no-repeat;
   background-size: cover;
   color: $text-color;
   line-height: 1.6;
@@ -58,28 +77,11 @@ header {
   overflow-y: auto;
   margin-bottom: 1rem;
 
-    /* WebKit-based browsers */
-    &::-webkit-scrollbar {
-      width: 10px;
-    }
-  
-    &::-webkit-scrollbar-track {
-      background: #f1f1f1;
-      border-radius: $border-radius;
-    }
-  
-    &::-webkit-scrollbar-thumb {
-      background: $primary-color;
-      border-radius: $border-radius;
-    }
-  
-    &::-webkit-scrollbar-thumb:hover {
-      background: darken($primary-color, 70%);
-    }
-  
-    /* Firefox */
-    scrollbar-width: thin;
-    scrollbar-color: $primary-color #f1f1f1;
+  /* WebKit-based browsers */
+
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: $primary-color #f1f1f1;
 }
 
 // Message Styles
@@ -208,7 +210,6 @@ textarea:focus {
   outline: 2px solid #50e3c2;
   outline-offset: 2px;
 }
-
 
 // Error styling
 .message .error {
