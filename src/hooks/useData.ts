@@ -143,6 +143,7 @@ const useData = create<LanguageAction & LanguageState>()((set, get) => ({
                 },
               });
               console.log(get().downloadProgress);
+              alert("Download in progress");
             });
           },
         });
