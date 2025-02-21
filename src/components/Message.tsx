@@ -123,7 +123,7 @@ function MessageList({ messages }: Props) {
                     </button>
                     {message.text.length > 150 &&
                       message.detectedLanguage.detectedLanguage === "en" && (
-                      <button
+                        <button
                           onClick={() =>
                             handleSummarize(message.id, message.text)
                           }
@@ -137,11 +137,7 @@ function MessageList({ messages }: Props) {
               )}
               {downloadProgress && (
                 <p>
-                  {/* Downloading <i
-                          className="bx bx-loader-circle bx-spin"
-                          style={{ color: "#088112", fontSize: "24px" }}
-                        ></i> */}
-                  {downloadProgress.loaded}/{downloadProgress.total}
+                  Downloading... {downloadProgress.loaded}/{downloadProgress.total}
                 </p>
               )}
               {errors[message.id] && (
