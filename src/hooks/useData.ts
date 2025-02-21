@@ -50,7 +50,7 @@ const useData = create<LanguageAction & LanguageState>()((set, get) => ({
       errors: { ...state.errors, [id]: null },
     }));
     try {
-      if (!("ai" in self) || !("languageDetector" in self.ai)) {
+      if (!("ai" in self && "languageDetector" in self.ai)) {
         throw new Error("Language detection API not available");
       }
       const capabilities = await self.ai.languageDetector.capabilities();
@@ -58,9 +58,9 @@ const useData = create<LanguageAction & LanguageState>()((set, get) => ({
       if (capabilities.available == "no") {
         throw new Error("The language detector isn't usable");
       }
-      // if (capabilities.available == "readily") {
-      //   console.log("Translator is ready...");
-      // }
+      if (capabilities.available == "readily") {
+        console.log("Language detector is active");
+      }
       const detector = await self.ai.languageDetector.create(
         capabilities.available === "after-download"
           ? {
@@ -110,28 +110,31 @@ const useData = create<LanguageAction & LanguageState>()((set, get) => ({
     }));
     try {
       let translator;
+      console.log("ai" in self && "translator" in self.ai);
+      
 
-      if (!("ai" in self) || !("translator" in self.ai)) {
+      if (!("ai" in self && "translator" in self.ai)) {
         throw new Error("The translator API isn't available");
+        
       }
 
-      const capabilities = await self.ai.translator.capabilities();
-      console.log("Not ready", capabilities.languagePairAvailable(source, target));
+      const translatorCapabilities = await self.ai.translator.capabilities();
+      console.log(translatorCapabilities.languagePairAvailable(source, target));
 
-      if (capabilities.available == "no") {
+      if (translatorCapabilities.available == "no") {
         throw new Error("You need to enable the translator API");
       }
 
-      if (!capabilities.languagePairAvailable(source, target)) {
+      if (!translatorCapabilities.languagePairAvailable(source, target)) {
         throw new Error("Language pair can't be translated");
       }
-      if (capabilities.available == "readily") {
+      if (translatorCapabilities.available == "readily") {
         translator = await self.ai.translator.create({
           sourceLanguage: source,
           targetLanguage: target,
         });
         console.log(translator);
-      } else if (capabilities.available == "after-download") {
+      } else if (translatorCapabilities.available == "after-download") {
         translator = await self.ai.languageDetector.create({
           monitor(m) {
             m.addEventListener("downloadprogress", (e) => {
@@ -148,14 +151,14 @@ const useData = create<LanguageAction & LanguageState>()((set, get) => ({
       }
       await translator?.ready;
       const result = await translator?.translate(text);
-      console.log("Trans", translator);
+      console.log(translator);
 
       return result;
     } catch (error) {
       set((state) => ({
         errors: {
           ...state.errors,
-          [id]: error instanceof Error ? error.message : "An error occurred",
+          [id]: error instanceof Error ? error.message : "An error occurred while translating",
         },
       }));
     } finally {
@@ -164,6 +167,7 @@ const useData = create<LanguageAction & LanguageState>()((set, get) => ({
       }));
     }
   },
+
   summarize: async (id, longText) => {
     set((state) => ({
       isLoading: { ...state.isLoading, [id]: true },

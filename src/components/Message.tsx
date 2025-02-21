@@ -7,7 +7,7 @@ interface Props {
   messages: Message[];
 }
 
-function MessageList ({ messages }: Props) {
+function MessageList({ messages }: Props) {
   const [translationSelections, setTranslationSelections] = useState<{
     [key: number]: string;
   }>({});
@@ -21,7 +21,7 @@ function MessageList ({ messages }: Props) {
   const errors = useData((state) => state.errors);
   const loadingStates = useData((state) => state.isLoading);
   const setError = useData((state) => state.setError);
-  const downloadProgress = useData((state) => state.downloadProgress);
+  // const downloadProgress = useData((state) => state.downloadProgress);
 
   const handleLanguageChange = (messageId: number, language: string) => {
     setTranslationSelections((prev) => ({ ...prev, [messageId]: language }));
@@ -68,16 +68,16 @@ function MessageList ({ messages }: Props) {
         {messages?.map((message: Message) => (
           <div key={message.id}>
             <div className="message user">
-              <div className="">
-                <p className="">You</p>
+              <div className="ai-text">
+                <p>You</p>
               </div>
               <p> {message.text}</p>
             </div>
 
             {
               <div className="message ai">
-                <div className="">
-                  <p className="">AI</p>
+                <div className="ai-text">
+                  <p>AI</p>
                 </div>
 
                 {message.detectedLanguage && (
@@ -98,7 +98,9 @@ function MessageList ({ messages }: Props) {
                       >
                         <option value="">Select Language</option>
                         {Languages.map((lang) => (
-                          <option key={lang.key}>{lang.name}</option>
+                          <option key={lang.key} value={lang.key}>
+                            {lang.name}
+                          </option>
                         ))}
                       </select>
 
@@ -131,16 +133,18 @@ function MessageList ({ messages }: Props) {
                     </div>
                   </div>
                 )}
-                {downloadProgress && (
+                {/* {downloadProgress && (
                   <p>
                     {downloadProgress.loaded}/{downloadProgress.total}
                   </p>
+                )} */}
+                {errors[message.id] && (
+                  <p className="error">{errors[message.id]}</p>
                 )}
-                {errors[message.id] && <p className="">{errors[message.id]}</p>}
                 {loadingStates[message.id] && <p className="">Loading...</p>}
                 {message.translatedText && (
-                  <p className="">
-                    <span className="">Translated Text: </span>
+                  <p className="translated-text">
+                    <span>Translated Text: </span>
                     {message?.translatedText}
                   </p>
                 )}
@@ -151,6 +155,6 @@ function MessageList ({ messages }: Props) {
       </div>
     </div>
   );
-};
+}
 
 export default MessageList;

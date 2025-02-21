@@ -83,6 +83,12 @@ header {
   }
 }
 
+.ai-text {
+  font-weight: bold;
+  color: brown;
+  font-size: 11px;
+}
+
 // Input Area
 .input-area {
   padding: 1rem;
@@ -118,6 +124,7 @@ header {
     transition: background 0.3s ease;
     display: flex;
     align-items: center;
+    justify-content: center;
 
     &:hover {
       background: darken($primary-color, 5%);
@@ -133,6 +140,24 @@ header {
       height: 20px;
     }
   }
+}
+
+// Error styling
+.message .error {
+  color: red;
+  font-weight: bold;
+  margin-top: 0.5rem;
+}
+
+// Translated text styling
+.message .translated-text {
+  background-color: #f0f9ff;
+  border: 1px solid #a0d8f1;
+  padding: 0.5rem 0.75rem;
+  border-radius: 8px;
+  margin-top: 0.75rem;
+  font-style: italic;
+  font-size: 0.95rem;
 }
 
 // Responsive Styles
