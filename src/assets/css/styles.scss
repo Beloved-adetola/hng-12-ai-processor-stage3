@@ -3,7 +3,7 @@ $primary-color: #4a90e2;
 $secondary-color: #50e3c2;
 $background-color: #f9f9f9;
 $text-color: #333;
-$border-radius: 8px;
+$border-radius: 15px;
 $box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 
 // Breakpoints
@@ -57,6 +57,29 @@ header {
   max-height: 400px;
   overflow-y: auto;
   margin-bottom: 1rem;
+
+    /* WebKit-based browsers */
+    &::-webkit-scrollbar {
+      width: 10px;
+    }
+  
+    &::-webkit-scrollbar-track {
+      background: #f1f1f1;
+      border-radius: $border-radius;
+    }
+  
+    &::-webkit-scrollbar-thumb {
+      background: $primary-color;
+      border-radius: $border-radius;
+    }
+  
+    &::-webkit-scrollbar-thumb:hover {
+      background: darken($primary-color, 70%);
+    }
+  
+    /* Firefox */
+    scrollbar-width: thin;
+    scrollbar-color: $primary-color #f1f1f1;
 }
 
 // Message Styles
@@ -177,6 +200,13 @@ header {
 
 .message button:hover {
   background: darken($primary-color, 5%);
+}
+
+button:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #50e3c2;
+  outline-offset: 2px;
 }
 
 

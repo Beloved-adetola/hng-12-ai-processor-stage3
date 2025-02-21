@@ -29,7 +29,7 @@ header nav h2 {
   margin: 2rem auto;
   padding: 1.5rem;
   background: #fff;
-  border-radius: 8px;
+  border-radius: 15px;
   box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
@@ -39,12 +39,30 @@ header nav h2 {
   max-height: 400px;
   overflow-y: auto;
   margin-bottom: 1rem;
+  /* WebKit-based browsers */
+  /* Firefox */
+  scrollbar-width: thin;
+  scrollbar-color: #4a90e2 #f1f1f1;
+}
+.chat-area::-webkit-scrollbar {
+  width: 10px;
+}
+.chat-area::-webkit-scrollbar-track {
+  background: #f1f1f1;
+  border-radius: 15px;
+}
+.chat-area::-webkit-scrollbar-thumb {
+  background: #4a90e2;
+  border-radius: 15px;
+}
+.chat-area::-webkit-scrollbar-thumb:hover {
+  background: black;
 }
 
 .message {
   padding: 0.75rem;
   margin-bottom: 1rem;
-  border-radius: 8px;
+  border-radius: 15px;
   background: #f2f2f2;
   box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
 }
@@ -79,7 +97,7 @@ header nav h2 {
   padding: 0.75rem;
   font-size: 1rem;
   border: 1px solid #ccc;
-  border-radius: 8px;
+  border-radius: 15px;
   resize: none;
   transition: border-color 0.3s ease, box-shadow 0.3s ease;
 }
@@ -94,7 +112,7 @@ header nav h2 {
   border: none;
   padding: 0.75rem 1rem;
   margin-left: 0.5rem;
-  border-radius: 8px;
+  border-radius: 15px;
   cursor: pointer;
   transition: background 0.3s ease;
   display: flex;
@@ -141,7 +159,7 @@ header nav h2 {
   color: #fff;
   border: none;
   padding: 0.5rem 1rem;
-  border-radius: 8px;
+  border-radius: 15px;
   cursor: pointer;
   font-size: 0.9rem;
   transition: background 0.3s ease;
@@ -150,6 +168,13 @@ header nav h2 {
 
 .message button:hover {
   background: #3483de;
+}
+
+button:focus,
+select:focus,
+textarea:focus {
+  outline: 2px solid #50e3c2;
+  outline-offset: 2px;
 }
 
 .message .error {

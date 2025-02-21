@@ -1,9 +1,8 @@
-
 const Header = () => {
   return (
-    <header className="">
-      <nav className="">
-        <h2 className="">AI Text Processor</h2>
+    <header className="header" role="banner">
+      <nav className="nav" aria-label="Main Navigation">
+        <h2 className="header-title">AI Text Processor</h2>
       </nav>
     </header>
   );

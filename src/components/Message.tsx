@@ -12,16 +12,13 @@ function MessageList({ messages }: Props) {
     [key: number]: string;
   }>({});
 
-  const translate = useData((state) => state.translate);
-  const summarize = useData((state) => state.summarize);
-
-  const addTranslatedText = useData((state) => state.addTranslatedText);
-  const addSummarizedText = useData((state) => state.addSummarizedText);
-
-  const errors = useData((state) => state.errors);
-  const loadingStates = useData((state) => state.isLoading);
-  const setError = useData((state) => state.setError);
-  // const downloadProgress = useData((state) => state.downloadProgress);
+  const translate = useData((s) => s.translate);
+  const summarize = useData((s) => s.summarize);
+  const addTranslatedText = useData((s) => s.addTranslatedText);
+  const addSummarizedText = useData((s) => s.addSummarizedText);
+  const errors = useData((s) => s.errors);
+  const loadingStates = useData((s) => s.isLoading);
+  const setError = useData((s) => s.setError);
 
   const handleLanguageChange = (messageId: number, language: string) => {
     setTranslationSelections((prev) => ({ ...prev, [messageId]: language }));
@@ -35,7 +32,6 @@ function MessageList({ messages }: Props) {
         source,
         translationSelections[id]
       );
-
       if (translatedText) {
         console.log(translatedText);
         addTranslatedText(id, translatedText);
@@ -58,98 +54,94 @@ function MessageList({ messages }: Props) {
   };
 
   return (
-    <div className="">
+    <div role="list">
       <div className="message">
-        {messages.length == 0 && (
-          <div className="">
-            <p className="">Welcome</p>
+        {messages.length === 0 && (
+          <div>
+            <p>Welcome</p>
           </div>
         )}
         {messages?.map((message: Message) => (
-          <div key={message.id}>
+          <div key={message.id} role="listitem">
             <div className="message user">
               <div className="ai-text">
                 <p>You</p>
               </div>
-              <p> {message.text}</p>
+              <p>{message.text}</p>
             </div>
 
-            {
-              <div className="message ai">
-                <div className="ai-text">
-                  <p>AI</p>
-                </div>
-
-                {message.detectedLanguage && (
-                  <div>
-                    <p className="detected-language">
-                      Detected Language:
-                      <span>{message.detectedLanguage.detectedLanguage}</span>
-                    </p>
-
-                    <div className="">
-                      <select
-                        title="Select Language"
-                        onChange={(e) =>
-                          handleLanguageChange(message.id, e.target.value)
-                        }
-                        value={translationSelections[message.id] || ""}
-                        className=""
-                      >
-                        <option value="">Select Language</option>
-                        {Languages.map((lang) => (
-                          <option key={lang.key} value={lang.key}>
-                            {lang.name}
-                          </option>
-                        ))}
-                      </select>
-
-                      <button
-                        onClick={() =>
-                          handleTranslate(
-                            message.id,
-                            message.text,
-                            message?.detectedLanguage.detectedLanguage
-                          )
-                        }
-                        disabled={!translationSelections[message.id]}
-                        className=""
-                      >
-                        {loadingStates[message.id]
-                          ? "Translating..."
-                          : "Translate"}
-                      </button>
-                      {message.text.length > 150 &&
-                        message.detectedLanguage.detectedLanguage == "en" && (
-                          <button
-                            className=""
-                            onClick={() =>
-                              handleSummarize(message.id, message.text)
-                            }
-                          >
-                            Summarize
-                          </button>
-                        )}
-                    </div>
-                  </div>
-                )}
-                {/* {downloadProgress && (
-                  <p>
-                    {downloadProgress.loaded}/{downloadProgress.total}
-                  </p>
-                )} */}
-                {errors[message.id] && (
-                  <p className="error">{errors[message.id]}</p>
-                )}
-                {loadingStates[message.id] && <p className="">Loading...</p>}
-                {message.translatedText && (
-                  <p className="translated-text">
-                    <span>Translated Text: </span>
-                    {message?.translatedText}
-                  </p>
-                )}
+            <div className="message ai">
+              <div className="ai-text">
+                <p>AI</p>
               </div>
-            }
+
+              {message.detectedLanguage && (
+                <div>
+                  <p className="detected-language">
+                    Detected Language: <span>{message.detectedLanguage.detectedLanguage}</span>
+                  </p>
+
+                  <div>
+                    <select
+                      title="Select Language"
+                      onChange={(e) =>
+                        handleLanguageChange(message.id, e.target.value)
+                      }
+                      value={translationSelections[message.id] || ""}
+                      aria-label="Select Target Language"
+                    >
+                      <option value="">Select Language</option>
+                      {Languages.map((lang) => (
+                        <option key={lang.key} value={lang.key}>
+                          {lang.name}
+                        </option>
+                      ))}
+                    </select>
+
+                    <button
+                      onClick={() =>
+                        handleTranslate(
+                          message.id,
+                          message.text,
+                          message.detectedLanguage.detectedLanguage
+                        )
+                      }
+                      disabled={!translationSelections[message.id]}
+                      aria-label="Translate Text"
+                    >
+                      {loadingStates[message.id] ? (
+                        <i
+                          className="bx bx-loader-circle bx-spin"
+                          style={{ color: "#fff", fontSize: "24px" }}
+                        ></i>
+                      ) : (
+                        "Translate"
+                      )}
+                    </button>
+                    {message.text.length > 150 &&
+                      message.detectedLanguage.detectedLanguage === "en" && (
+                        <button
+                          onClick={() =>
+                            handleSummarize(message.id, message.text)
+                          }
+                        aria-label="Summarize Text"
+                        >
+                          Summarize
+                        </button>
+                      )}
+                  </div>
+                </div>
+              )}
+              {errors[message.id] && (
+                <p className="error">{errors[message.id]}</p>
+              )}
+              {message.translatedText && (
+                <p className="translated-text">
+                  <b>Translated Text: </b>
+                  {message.translatedText}
+                </p>
+              )}
+            </div>
           </div>
         ))}
       </div>
