@@ -133,6 +133,7 @@ const useData = create<LanguageAction & LanguageState>()((set, get) => ({
         });
         console.log(translator);
       } else if (translatorCapabilities.available == "after-download") {
+        alert("Download in progress, please wait...");
         translator = await self.ai.languageDetector.create({
           monitor(m) {
             m.addEventListener("downloadprogress", (e) => {
@@ -143,7 +144,6 @@ const useData = create<LanguageAction & LanguageState>()((set, get) => ({
                 },
               });
               console.log(get().downloadProgress);
-              alert("Download in progress");
             });
           },
         });
